@@ -1,0 +1,34 @@
+{
+    "name": "create-contao-app",
+    "version": "0.0.1",
+    "description": "Install Contao",
+    "main": "index.js",
+    "bin": {
+        "create-contao-app": "./index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DieSchittigs/create-contao-app.git"
+    },
+    "keywords": [
+        "contao",
+        "create-app",
+        "npx"
+    ],
+    "author": "Tobias Duehr <tobias@dieschittigs.de>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/DieSchittigs/create-contao-app/issues"
+    },
+    "homepage": "https://github.com/DieSchittigs/create-contao-app#readme",
+    "dependencies": {
+        "chalk": "^4.0.0",
+        "inquirer": "^7.1.0",
+        "recursive-copy": "^2.0.10",
+        "tmp-promise": "^2.0.2",
+        "yargs": "^15.3.1"
+    }
+}

@@ -1,0 +1,7 @@
+main .ce_hyperlink {
+    margin: $ce-margin 0;
+    text-align: center;
+    a {
+        @extend .button;
+    }
+}

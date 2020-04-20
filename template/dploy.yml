@@ -1,0 +1,22 @@
+live:
+    scheme: sftp
+    host: host
+    port: 21
+    user: ssh_user
+    pass: ssh_pass
+    check: true
+    exclude:
+        [
+            "dploy.yaml",
+            "*.sublime-*",
+            ".DS_Store",
+            "package.json",
+            "webpack.*",
+            "/src/**",
+            ".git*",
+        ]
+    include:
+        "files/dist/**": "files/dist/"
+    path:
+        local: /
+        remote: /

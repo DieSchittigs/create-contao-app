@@ -1,0 +1,11 @@
+{
+    "scripts": {
+        "serve": "node_modules/.bin/contao-dev-server",
+        "serve:watch": "node_modules/.bin/stmux -w always -e ERROR -m beep,system -t 'webpack serve:watch' -- [ 'npm run serve' .. 'npm run watch' ]",
+        "watch:serve": "node_modules/.bin/stmux -w always -e ERROR -m beep,system -t 'webpack watch:serve' -- [ 'npm run watch' .. 'npm run serve' ]",
+        "deploy": "node_modules/.bin/dploy live",
+        "watch": "node_modules/.bin/webpack --watch --progress --hide-modules --mode=development",
+        "production": "node_modules/.bin/webpack --progress --hide-modules --mode=production",
+        "prune": "vendor/bin/contao-console cache:clear && vendor/bin/contao-console cache:clear --env=dev"
+    }
+}
