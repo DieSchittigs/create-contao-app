@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const inquirer = require("inquirer");
 const argv = require("yargs").argv;
 const stepInit = require("./src/stepInit");
