@@ -5,7 +5,7 @@ const argv = require("yargs").argv;
 const stepInit = require("./src/stepInit");
 const stepContao = require("./src/stepContao");
 const stepNode = require("./src/stepNode");
-const chalk = require("chalk");
+const printLn = require("./src/printLn");
 
 const contaoQuestions = [
     {
@@ -170,7 +170,7 @@ const jsQuestions = [
 ];
 
 async function main() {
-    console.log(chalk.bgCyan(" 👋 Hi, welcome to Create Contao App! "));
+    printLn.nfo("👋 Hi, welcome to Create Contao App!");
     let dir = "./";
     if (argv._ && argv._.length) dir = argv._[0];
     if (!(await stepInit(dir))) return;
@@ -178,12 +178,12 @@ async function main() {
     if (answers.webpack) {
         answers = { ...answers, ...(await inquirer.prompt(jsQuestions)) };
     }
-    console.log(chalk.bgCyan(" 🚩 Setting up your Contao Installation "));
+    printLn.nfo("🚩 Setting up your Contao Installation");
     await stepContao(answers);
-    console.log(chalk.bgCyan(" 🚩 Adding JavaScript packages "));
+    printLn.nfo("🚩 Adding JavaScript packages");
     await stepNode(answers);
 
-    console.log(chalk.bgGreen(" 🚩 All done 🥳 "));
+    printLn.nfo("🚩 All done 🥳");
 }
 
 main();
