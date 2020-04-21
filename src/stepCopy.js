@@ -32,11 +32,11 @@ module.exports = async function (answers) {
             path.join(__dirname, "../template/webpack.config.js"),
             "./webpack.config.js"
         );
-        await templateDirs.forEach(async (dir) => {
+        for (const dir of templateDirs) {
             await mkdir(dir);
             await copy(path.join(__dirname, `../template/${dir}`), `./${dir}`, {
                 dot: true,
             });
-        });
+        }
     }
 };
