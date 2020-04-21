@@ -2,9 +2,7 @@ const fs = require("fs").promises;
 const path = require("path");
 const npmScripts = require(path.join(__dirname, "../template/package.json"))
     .scripts;
-const copy = require("recursive-copy");
 const exec = require("./exec");
-const chalk = require("chalk");
 
 const devNpmModules = [
     "stmux",
@@ -36,35 +34,13 @@ module.exports = async function (answers) {
         }
     }
     await fs.writeFile("package.json", JSON.stringify({ scripts }, null, 2));
-    if (devServer) {
-        await exec("npm", [
-            "i",
-            "@dieschittigs/contao-dev-server",
-            "--save-dev",
-        ]);
-    }
-    if (answers.deploy) {
-        await fs.copyFile(
-            path.join(__dirname, "../template/dploy.yml"),
-            "./dploy.yml"
-        );
-        await exec("npm", ["i", "dploy", "--save-dev"]);
-    }
+    const devModules = [];
+    if (devServer) devModules.push("@dieschittigs/contao-dev-server");
+    if (answers.deploy) devModules.push("dploy");
     if (answers.webpack) {
-        await exec("npm", ["i", ...devNpmModules, "--save-dev"]);
+        devModules.push(...devNpmModules);
         await exec("npm", ["i", ...answers.jsPackages]);
-        await fs.copyFile(
-            path.join(__dirname, "../template/webpack.config.js"),
-            "./webpack.config.js"
-        );
-        try {
-            await fs.mkdir("src");
-            await copy(path.join(__dirname, "../template/src"), "./src", {
-                dot: true,
-            });
-            await copy(path.join(__dirname, "../template/files"), "./files", {
-                dot: true,
-            });
-        } catch (e) {}
     }
+    if (devModules.length)
+        await exec("npm", ["i", ...devModules, "--save-dev"]);
 };

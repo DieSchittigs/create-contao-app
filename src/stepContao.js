@@ -44,15 +44,9 @@ module.exports = async function (answers) {
         ...answers.contaoPluginBundles,
     ]);
     if (answers.localDev.indexOf("contaoManager") >= 0)
-        exec("php", [
+        await exec("php", [
             path.join(__dirname, "../scripts/install_contao-manager.php"),
         ]);
 
-    if (answers.localDev.indexOf("prependLocale") >= 0) {
-        try {
-            await fs.mkdir("app");
-            await copy(path.join(__dirname, "../template/app"), "./app");
-        } catch (e) {}
-    }
     tmpDir.cleanup();
 };

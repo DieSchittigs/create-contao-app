@@ -5,6 +5,7 @@ const argv = require("yargs").argv;
 const stepInit = require("./src/stepInit");
 const stepContao = require("./src/stepContao");
 const stepNode = require("./src/stepNode");
+const stepCopy = require("./src/stepCopy");
 const printLn = require("./src/printLn");
 
 const contaoQuestions = [
@@ -19,6 +20,11 @@ const contaoQuestions = [
         message: "Setup",
         name: "localDev",
         choices: [
+            {
+                value: "enableDebug",
+                name: "Enable debug mode in .env",
+                checked: true,
+            },
             {
                 value: "contaoDevServer",
                 name: "Install local development server",
@@ -115,54 +121,54 @@ const jsQuestions = [
             { value: "jquery", title: "jQuery - Still kickin'", checked: true },
             {
                 value: "slick-carousel",
-                title: "Slick - The last carousel you'll ever need",
+                name: "Slick - The last carousel you'll ever need",
                 checked: true,
             },
             {
                 value: "stickyfilljs",
-                title: "StickFillJS - CSS position: sticky Polyfill",
+                name: "StickFillJS - CSS position: sticky Polyfill",
                 checked: true,
             },
             {
                 value: "smooth-scroll",
-                title: "Smooth Scroll - Animate scrolling to anchor links",
+                name: "Smooth Scroll - Animate scrolling to anchor links",
                 checked: true,
             },
             {
                 value: "magnific-popup",
-                title:
+                name:
                     "Magnific Popup - Fast, light and responsive lightbox plugin for jQuery",
                 checked: true,
             },
             {
                 value: "lodash",
-                title: "Lodash - A JavaScript utility library",
+                name: "Lodash - A JavaScript utility library",
                 checked: false,
             },
             {
                 value: "moment",
-                title:
+                name:
                     "Moment.js - Parse, validate, manipulate, and display dates and times",
                 checked: false,
             },
             {
                 value: "axios",
-                title: "Axios - Promise based HTTP client",
+                name: "Axios - Promise based HTTP client",
                 checked: false,
             },
             {
                 value: "font-awesome",
-                title: "Font Awesome - The iconic font and CSS framework",
+                name: "Font Awesome - The iconic font and CSS framework",
                 checked: false,
             },
             {
                 value: "react react-dom",
-                title: "React - A library for building UIs",
+                name: "React - A library for building UIs",
                 checked: false,
             },
             {
                 value: "vue",
-                title: "Vue.js - The Progressive JavaScript Framework",
+                name: "Vue.js - The Progressive JavaScript Framework",
                 checked: false,
             },
         ],
@@ -170,7 +176,7 @@ const jsQuestions = [
 ];
 
 async function main() {
-    printLn.nfo("👋 Hi, welcome to Create Contao App!");
+    console.log("\n 👋 Hi, welcome to Create Contao App!\n");
     let dir = "./";
     if (argv._ && argv._.length) dir = argv._[0];
     if (!(await stepInit(dir))) return;
@@ -182,7 +188,8 @@ async function main() {
     await stepContao(answers);
     printLn.nfo("🚩 Adding JavaScript packages");
     await stepNode(answers);
-
+    printLn.nfo("🚩 Copying template files");
+    await stepCopy(answers);
     printLn.nfo("🚩 All done 🥳");
 }
 
