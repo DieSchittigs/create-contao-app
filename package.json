@@ -26,6 +26,7 @@
     "homepage": "https://github.com/DieSchittigs/create-contao-app#readme",
     "dependencies": {
         "chalk": "^4.0.0",
+        "download": "^8.0.0",
         "inquirer": "^7.1.0",
         "recursive-copy": "^2.0.10",
         "tmp-promise": "^2.0.2",

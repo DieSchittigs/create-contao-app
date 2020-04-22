@@ -12,7 +12,7 @@ async function mkdir(dir) {
     } catch (e) {}
 }
 
-module.exports = async function (answers) {
+module.exports = async function(answers) {
     if (answers.deploy) {
         await fs.copyFile(
             path.join(__dirname, "../template/dploy.yml"),
@@ -21,6 +21,7 @@ module.exports = async function (answers) {
     }
     if (answers.localDev.indexOf("enableDebug") >= 0) {
         await fs.copyFile(path.join(__dirname, "../template/.env"), "./.env");
+        await fs.appendFile("./.gitignore", ".env\n");
     }
     if (answers.localDev.indexOf("prependLocale") >= 0) {
         await mkdir("app");
@@ -35,7 +36,7 @@ module.exports = async function (answers) {
         for (const dir of templateDirs) {
             await mkdir(dir);
             await copy(path.join(__dirname, `../template/${dir}`), `./${dir}`, {
-                dot: true,
+                dot: true
             });
         }
     }
