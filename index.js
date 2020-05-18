@@ -40,6 +40,11 @@ const contaoQuestions = [
                 name: "Enable prepend_locale in config",
                 checked: true,
             },
+            {
+                value: "removeSuffix",
+                name: "Set empty url_suffix in config",
+                checked: true,
+            },
         ],
     },
     {

@@ -3,7 +3,8 @@ const path = require("path");
 const copy = require("recursive-copy");
 const printLn = require("./printLn");
 
-const templateDirs = ["src", "files", "web", "templates"];
+const templateDirs = ["files/uploads", "web", "templates"];
+const webpackDirs = ["src", "files/dist"];
 
 async function mkdir(dir) {
     try {
@@ -12,8 +13,8 @@ async function mkdir(dir) {
     } catch (e) {}
 }
 
-module.exports = async function(answers) {
-    if (answers.deploy) {
+module.exports = async function (answers) {
+    if (answers.dploy) {
         await fs.copyFile(
             path.join(__dirname, "../template/dploy.yml"),
             "./dploy.yml"
@@ -23,20 +24,30 @@ module.exports = async function(answers) {
         await fs.copyFile(path.join(__dirname, "../template/.env"), "./.env");
         await fs.appendFile("./.gitignore", ".env\n");
     }
-    if (answers.localDev.indexOf("prependLocale") >= 0) {
-        await mkdir("app");
-        await copy(path.join(__dirname, "../template/app"), "./app");
-    }
+    await mkdir("config");
+    await copy(path.join(__dirname, "../template/config"), "./config");
+    if (answers.localDev.indexOf("prependLocale") >= 0)
+        await fs.appendFile("./config/config.yml", "  prepend_locale: true\n");
 
+    if (answers.localDev.indexOf("removeSuffix") >= 0)
+        await fs.appendFile("./app/config/config.yml", '  url_suffix: ""\n');
+
+    await mkdir("files");
+    for (const dir of templateDirs) {
+        await mkdir(dir);
+        await copy(path.join(__dirname, `../template/${dir}`), `./${dir}`, {
+            dot: true,
+        });
+    }
     if (answers.webpack) {
         await fs.copyFile(
             path.join(__dirname, "../template/webpack.config.js"),
             "./webpack.config.js"
         );
-        for (const dir of templateDirs) {
+        for (const dir of webpackDirs) {
             await mkdir(dir);
             await copy(path.join(__dirname, `../template/${dir}`), `./${dir}`, {
-                dot: true
+                dot: true,
             });
         }
     }
