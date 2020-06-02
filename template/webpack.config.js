@@ -4,10 +4,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         main: "./src/scss/main.scss",
-        js: "./src/js/app.js",
+        app: "./src/js/app.js",
     },
     output: {
-        path: path.resolve(__dirname, "../files/dist"),
+        path: path.resolve(__dirname, "./files/dist"),
     },
     plugins: [
         new MiniCssExtractPlugin({

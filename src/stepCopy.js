@@ -30,7 +30,7 @@ module.exports = async function (answers) {
         await fs.appendFile("./config/config.yml", "  prepend_locale: true\n");
 
     if (answers.localDev.indexOf("removeSuffix") >= 0)
-        await fs.appendFile("./app/config/config.yml", '  url_suffix: ""\n');
+        await fs.appendFile("./config/config.yml", '  url_suffix: ""\n');
 
     await mkdir("files");
     for (const dir of templateDirs) {

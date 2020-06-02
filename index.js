@@ -6,6 +6,7 @@ const stepInit = require("./src/stepInit");
 const stepContao = require("./src/stepContao");
 const stepNode = require("./src/stepNode");
 const stepCopy = require("./src/stepCopy");
+const stepFinish = require("./src/stepFinish");
 const printLn = require("./src/printLn");
 
 const contaoQuestions = [
@@ -195,6 +196,7 @@ async function main() {
     await stepNode(answers);
     printLn.nfo("🚩 Copying template files");
     await stepCopy(answers);
+    await stepFinish(answers);
     printLn.nfo("🚩 All done 🥳");
 }
 
