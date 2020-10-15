@@ -10,7 +10,7 @@ async function mkdir(dir) {
     try {
         await fs.mkdir(dir, { recursive: true });
         printLn.log("Created dir", dir);
-    } catch (e) {}
+    } catch (e) { }
 }
 
 module.exports = async function (answers) {
@@ -41,8 +41,8 @@ module.exports = async function (answers) {
     }
     if (answers.webpack) {
         await fs.copyFile(
-            path.join(__dirname, "../template/webpack.config.js"),
-            "./webpack.config.js"
+            path.join(__dirname, "../template/webpack.mix.js"),
+            "./webpack.mix.js"
         );
         for (const dir of webpackDirs) {
             await mkdir(dir);

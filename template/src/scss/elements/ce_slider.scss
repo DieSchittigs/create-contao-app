@@ -1,4 +1,4 @@
-@import "~slick-carousel/slick/slick.scss";
+@import '~slick-carousel/slick/slick.scss';
 
 .ce_sliderStart {
     .slider-wrapper {
@@ -14,16 +14,15 @@
             background-color: $color-active;
             border-radius: 100%;
             z-index: 5;
-            transform: scale(1);
-            transition: background-color 0.2s ease-in-out,
-                transform 0.2s ease-in-out;
+            transform: scale(1.0);
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
             &:after {
                 content: none;
             }
             &:before {
                 content: "";
-                position: absolute;
+                position:absolute;
                 left: 0;
                 top: 0;
                 width: 100%;
@@ -103,7 +102,7 @@
             }
         }
     }
-    .slider-control {
+    .slider-control{
         display: none;
     }
 }

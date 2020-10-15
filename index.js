@@ -84,6 +84,16 @@ const contaoQuestions = [
         name: "contaoPluginBundles",
         choices: [
             {
+                name: "haste extension for Contao Open Source CMS (codefog)",
+                checked: true,
+                value: "codefog/contao-haste",
+            },
+            {
+                name: "News Categories bundle for Contao Open Source CMS (codefog)",
+                checked: false,
+                value: "codefog/contao-news_categories",
+            },
+            {
                 name: "Content API (Die Schittigs)",
                 checked: false,
                 value: "dieschittigs/contao-content-api",
@@ -107,6 +117,11 @@ const contaoQuestions = [
                 name: "Notification Center (terminal42)",
                 checked: false,
                 value: "terminal42/notification_center",
+            },
+            {
+                name: "DC_Multilingual extension for Contao Open Source CMS (terminal42)",
+                checked: false,
+                value: "terminal42/dc_multilingual",
             },
         ],
     },
@@ -165,11 +180,6 @@ const jsQuestions = [
             {
                 value: "font-awesome",
                 name: "Font Awesome - The iconic font and CSS framework",
-                checked: false,
-            },
-            {
-                value: "react react-dom",
-                name: "React - A library for building UIs",
                 checked: false,
             },
             {

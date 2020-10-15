@@ -4,9 +4,13 @@
         "serve:watch": "node_modules/.bin/stmux -w always -e ERROR -m beep,system -t 'webpack serve:watch' -- [ 'npm run serve' .. 'npm run watch' ]",
         "watch:serve": "node_modules/.bin/stmux -w always -e ERROR -m beep,system -t 'webpack watch:serve' -- [ 'npm run watch' .. 'npm run serve' ]",
         "deploy": "node_modules/.bin/dploy live",
-        "watch": "node_modules/.bin/webpack --watch --progress --hide-modules --mode=development",
-        "production": "node_modules/.bin/webpack --progress --hide-modules --mode=production",
-        "dev": "npm run watch & npm run serve",
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prune": "vendor/bin/contao-console cache:clear --env=prod && vendor/bin/contao-console cache:clear --env=dev"
     }
 }

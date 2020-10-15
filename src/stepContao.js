@@ -13,7 +13,7 @@ const contaoCoreBundles = [
     "contao/newsletter-bundle"
 ];
 
-module.exports = async function(answers) {
+module.exports = async function (answers) {
     const tmpDir = await tmp.dir();
 
     await exec("php", [

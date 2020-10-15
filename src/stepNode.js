@@ -6,17 +6,12 @@ const exec = require("./exec");
 
 const devNpmModules = [
     "stmux",
-    "webpack",
-    "webpack-cli",
-    "@babel/core",
-    "@babel/preset-env",
-    "css-loader",
-    "babel-loader",
-    "file-loader",
-    "mini-css-extract-plugin",
+    "cross-env",
+    "laravel-mix",
+    "resolve-url-loader",
+    "sass",
     "sass-loader",
-    "style-loader",
-    "node-sass",
+    "vue-template-compiler"
 ];
 
 module.exports = async function (answers) {
