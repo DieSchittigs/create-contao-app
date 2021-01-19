@@ -1,38 +1,39 @@
-@import '../base/magnific-popup';
-
 .ce_gallery {
     margin: $ce-margin 0;
     ul {
-        @extend .flex-wrap;
+        display: flex;
+        flex-wrap: wrap;
+        @extend %reset-list;
+        margin: 0 -$gutter-width;
 
         li {
-            margin-bottom: 0.5em;
+            padding: $gutter-width;
         }
 
         // Max. 4 columns
         li {
-            width: 24%;
+            flex: 0 0 25%;
             @media (max-width: 800px) {
-                width: 49%;
+                flex: 0 0 50%;
             }
             @media (max-width: 650px) {
-                width: 100%;
+                flex: 0 0 100%;
             }
         }
         &.cols_3 li {
-            width: 32.333%;
+            flex: 0 0 33.333%;
             @media (max-width: 650px) {
-                width: 100%;
+                flex: 0 0 100%;
             }
         }
         &.cols_2 li {
-            width: 49%;
+            flex: 0 0 50%;
             @media (max-width: 650px) {
-                width: 100%;
+                flex: 0 0 100%;
             }
         }
         &.cols_1 li {
-            width: 100%;
+            flex: 0 0 100%;
         }
 
 
@@ -44,5 +45,11 @@
                 transform: scale(1.05);
             }
         }
+    }
+}
+
+.glightbox-container {
+    button {
+        padding: 0;
     }
 }

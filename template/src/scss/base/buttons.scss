@@ -1,0 +1,14 @@
+.button, button, input[type='submit'] {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: $color-active;
+    color: white;
+    text-decoration: none;
+    border: 0;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: $border-radius;
+    cursor: pointer;
+    &:hover {
+        background-color: $color-active-over;
+    }
+}

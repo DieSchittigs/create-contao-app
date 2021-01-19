@@ -1,16 +1,21 @@
+// Packages
+@import '~normalize.css/normalize.css';
+@import '~glightbox/dist/css/glightbox.css';
+@import '~tiny-slider/src/tiny-slider.scss';
+
 // Base Layout
 @import './base/settings';
 @import './base/normalize';
+@import './base/fonts';
 @import './base/typo';
+@import './base/buttons';
 @import './base/layout';
+@import './base/header';
+@import './base/footer';
 @import './base/helpers';
 
-// Font Awesome
-// $fa-font-path: "~font-awesome/fonts";
-// @import '~font-awesome/scss/font-awesome';
-
 // Modules
-@import './modules/burger';
+@import './modules/mod_article';
 @import './modules/mod_navigation';
 @import './modules/mod_navigation_mobile';
 
@@ -24,8 +29,10 @@
 @import './elements/ce_download';
 @import './elements/ce_downloads';
 @import './elements/ce_player';
+@import './elements/ce_youtube';
 @import './elements/ce_slider';
 @import './elements/ce_form';
+@import './elements/ce_accordion';
 
 // Page-Specific Styles
 @import './pages/index';

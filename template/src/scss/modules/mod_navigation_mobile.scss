@@ -1,53 +1,74 @@
-body.mobilemenu{
-    #container {
-        transition: transform .25s ease-in-out;
-        transform: translateX(0);
-    }
-}
-body.mobilemenu.mobilemenu-active{
+body.mobilemenu-active{
     overflow: hidden;
-    #container{
-        transform: translateX(80vw);
-    }
 }
 
- .mod_navigation {
+.mod_navigation {
     @media(max-width: $show-mobile-menu){
         position: fixed;
         left: 0;
-        top: 70px;
+        top: 60px;
         bottom: 0;
-        width: 80vw;
+        width: 100vw !important;
+        z-index: 400;
         background: $color-boxes;
-        transition: transform .25s ease-in-out;
-        transform: translateX(-80vw);
-        body.mobilemenu-active &{
+        transition: transform 0.3s ease-out;
+        transform: translateX(-100vw);
+        overflow-y: auto;
+        body.mobilemenu-active & {
             transform: translateX(0);
         }
-        ul.level_1{
-            overflow: hidden;
-            overflow-y: auto;
-            display: block;
-            > li{
-                > a, > strong {
-                    display: block;
-                    padding: 20px;
-                }
-            }    
+        ul.level_1 {
+            display: block; 
         }
-        &:after{
-            content: "";
-            position: absolute;
-            left: 80vw;
-            width: 0;
-            top: 0;
-            bottom: 0;
-            background: rgba(0,0,0,.5);
-            transition: opacity .5s ease-in-out;
-            opacity: 0;
+        ul.level_2 {
+            max-height: none;
+            position: static;
+            box-shadow: none;
+            & > li {
+                & > a, & > strong {
+                    padding: 20px 25px 20px 50px;
+                }
+            }
+        }
+    }
+}
+
+.burger{
+    display: none;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    position: relative;
+    @media (max-width: $show-mobile-menu) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    & > span {
+        display: block;
+        height: 4px;
+        width: 80%;
+        background: $color-active;
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+        transform-origin: center center;
+        transition: transform 0.2s ease-out, opacity 0.1s ease-in-out, width 0.1s ease-out;
+        margin: 3px 0;
+        &:first-child{
             body.mobilemenu-active &{
-                opacity: 1;
-                width: 100vw;
+                transform: translateY(10px) rotate(45deg);
+            }
+        }
+        &:nth-child(2) {
+            body.mobilemenu-active &{
+                width: 0;
+                opacity: 0;
+            }
+        }
+        &:nth-child(3) {
+            body.mobilemenu-active &{
+                transform: translateY(-10px) rotate(-45deg);
             }
         }
     }

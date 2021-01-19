@@ -1,10 +1,7 @@
-import $ from 'jquery';
-
-$('.toggler').each(function(i){
-    const $toggler = $(this);
-    const $accordion = $toggler.next('.accordion');
-    $accordion.hide();
-    $toggler.on('click', ()=>{
-        $accordion.slideToggle();
-    });
+document.querySelectorAll('.ce_accordion').forEach(container => {
+    const toggler = container.querySelector('.toggler');
+    const content = container.querySelector('.accordion');
+    toggler.addEventListener('click', e => {
+        container.classList.toggle('open');
+    })
 });

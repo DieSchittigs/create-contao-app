@@ -1,33 +1,34 @@
-import $ from 'jquery';
-import slick from 'slick-carousel';
+import { tns } from 'tiny-slider/src/tiny-slider';
 
-const opts = {
-    autoplay: false,
-    autoplaySpeed: 5000,
-    infinite: true,
-    speed: 300,
-    dots: true,
-    slidesToShow: 1
-};
+document.querySelectorAll('.ce_sliderStart .content-slider').forEach(container => {
+    
+    const contaoSettings = container.dataset.config.split(',');
+    const sliderElement = container.querySelector('.slider-wrapper');
 
-$(".content-slider").each(function(i){
-    const $el = $(this);
-    const config = $el.data('config').split(',');
-    config.forEach((val, index) => {
-        val = parseInt(val);
-        switch(index){
-            case 0:
-                opts.autoplaySpeed = val;
-                opts.autoplay = val > 0;
-            break;
-            case 1:
-                opts.speed = val;
-            break;
-            // Option 2 Offset is not supported in slick
-            case 3:
-                opts.infinite = val > 0;
-            break;
-        }
+    const tinySlider = tns({
+        container: sliderElement,
+        items: 1,
+        navPosition: 'bottom',
+        mouseDrag: true,
+        autoplay: contaoSettings[0] > 0,
+        autoplayTimeout: contaoSettings[0],
+        autoplayHoverPause: true,
+        autoplayButtonOutput: false,
+        speed: contaoSettings[1],
+        startIndex: contaoSettings[2],
+        loop: contaoSettings[3],
+        controlsText: ['','']
     });
-    $el.children('.slider-wrapper').slick(opts);
+
+    // Fixes mouseDrag + autoplay bug, see https://github.com/ganlanyuan/tiny-slider/issues/521
+    tinySlider.events.on('dragStart', function() {
+        tinySlider.pause();
+    });
+    tinySlider.events.on('dragMove', function() {
+        tinySlider.pause();
+    });
+    tinySlider.events.on('dragEnd', function() {
+        tinySlider.pause();
+    });
+    
 });

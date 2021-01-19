@@ -1,24 +1,46 @@
 .ce_text {
     margin: $ce-margin 0;
 
-    // Standardized floats
-    .float_left {
-        float: left;
-        margin-right: 1em;
-        margin-bottom: 1em;
-        max-width: 40%;
-    }
-    .float_right {
-        float: right;
-        margin-left: 1em;
-        margin-bottom: 1em;
-        max-width: 40%;
-    }
-    .float_above {
-        margin-bottom: 1em;
-    }
-    .float_below {
-        margin-top: 1em;
+    &.addImage {
+        display: flex;
+        align-items: center;
+        margin-left: -$gutter-width;
+        margin-right: -$gutter-width;
+
+        .image_container {
+            margin: 0 $gutter-width;
+        }
+        .text_container {
+            flex: 1 1 auto;
+            margin: 0 $gutter-width;
+            & > :first-child {
+                margin-top: 0;
+            }
+            & > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &.has-contentimg-3 .image_container {
+            flex: 0 0 calc(25% - #{$gutter-width / 2});
+        }
+        &.has-contentimg-4 .image_container {
+            flex: 0 0 calc(33.333% - #{$gutter-width / 2});
+        }
+        &.has-contentimg-6 .image_container {
+            flex: 0 0 calc(50% - #{$gutter-width / 2});
+        }
+        &.has-contentimg-12 .image_container {
+            flex: 0 0 100%;
+        }
+
+
+        &.hasImageAbove {
+            display: block;
+            .text_container {
+                margin-top: $ce-margin;
+            }
+        }
     }
 
 

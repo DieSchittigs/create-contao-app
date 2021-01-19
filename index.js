@@ -139,27 +139,10 @@ const jsQuestions = [
         message: "Additional JS libraries",
         name: "jsPackages",
         choices: [
-            { value: "jquery", title: "jQuery - Still kickin'", checked: true },
             {
-                value: "slick-carousel",
-                name: "Slick - The last carousel you'll ever need",
-                checked: true,
-            },
-            {
-                value: "stickyfilljs",
-                name: "StickFillJS - CSS position: sticky Polyfill",
-                checked: true,
-            },
-            {
-                value: "smooth-scroll",
-                name: "Smooth Scroll - Animate scrolling to anchor links",
-                checked: true,
-            },
-            {
-                value: "magnific-popup",
-                name:
-                    "Magnific Popup - Fast, light and responsive lightbox plugin for jQuery",
-                checked: true,
+                value: "jquery",
+                title: "jQuery - Still kickin'",
+                checked: false
             },
             {
                 value: "lodash",
@@ -167,19 +150,8 @@ const jsQuestions = [
                 checked: false,
             },
             {
-                value: "moment",
-                name:
-                    "Moment.js - Parse, validate, manipulate, and display dates and times",
-                checked: false,
-            },
-            {
                 value: "axios",
                 name: "Axios - Promise based HTTP client",
-                checked: false,
-            },
-            {
-                value: "font-awesome",
-                name: "Font Awesome - The iconic font and CSS framework",
                 checked: false,
             },
             {

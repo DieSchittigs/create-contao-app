@@ -1,30 +1,37 @@
 // Colors
 $color-text: #0e1012;
-$color-active: #1863df; // Primary color for links, buttons, etc.
-$color-active-over: darken($color-active, 20);
-$color-support: #df8d18; // Secondary color
-$color-support-over: darken($color-support, 20);
+$color-white: #ffffff;
+$color-active: #E76B60; // Primary color for links, buttons, etc.
+$color-active-over: mix($color-active, $color-white, 80%);
 $color-background: #efeff0;
-$color-lines: hsl(240, 1%, 85%);
+$color-lines: #cccccc;
 $color-boxes: #eaeaeb;
 
 // Fonts
-$font-family-text: Raleway, Verdana, sans-serif;
-$font-family-headline: Raleway, Verdana, sans-serif;
-// ... define all fonts
+$font-family-text: Montserrat, Verdana, sans-serif;
+$font-family-headline: Montserrat, Verdana, sans-serif;
 
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 
-// Content element default vertical margin
-$ce-margin: 2em;
 
-// Content width setting
+// Margins
+$ce-margin: 40px; // Use for all vertical margins within one section / article / logical block
+$article-margin: 100px; // Use for all vertical margins between two sextions / articles / logical blocks
+$gutter-width: 20px; // Use for horizontal margins, between columns, between text and image etc.
+$box-padding: 20px; // Padding for boxes
+
+// Content width setting for centered layouts
 %contentwidth {
     width: 92%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-// Mobile Menu Settings
+// Mobile Menu Breakpoint
 $show-mobile-menu: 720px;
+
+
+// Other global styling settings
+$drop-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+$border-radius: 0;

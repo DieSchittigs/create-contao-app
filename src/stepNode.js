@@ -11,7 +11,14 @@ const devNpmModules = [
     "resolve-url-loader",
     "sass",
     "sass-loader",
-    "vue-template-compiler"
+    "vue-template-compiler",
+    "postcss"
+];
+
+const npmModules = [
+    "glightbox",
+    "normalize.css",
+    "tiny-slider"
 ];
 
 module.exports = async function (answers) {
@@ -30,12 +37,17 @@ module.exports = async function (answers) {
     }
     await fs.writeFile("package.json", JSON.stringify({ scripts }, null, 2));
     const devModules = [];
+    const modules = [];
     if (devServer) devModules.push("@dieschittigs/contao-dev-server");
     if (answers.deploy) devModules.push("dploy");
     if (answers.webpack) {
         devModules.push(...devNpmModules);
-        await exec("npm", ["i", ...answers.jsPackages]);
+        modules.push(...npmModules);
+        modules.push(answers.jsPackages);
     }
+    if (modules.length)
+        await exec("npm", ["i", ...modules]);
+    
     if (devModules.length)
         await exec("npm", ["i", ...devModules, "--save-dev"]);
 };

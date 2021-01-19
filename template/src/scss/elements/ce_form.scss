@@ -1,7 +1,7 @@
 .ce_form {
 
     label {
-        font-size: 80%;
+        @extend .small;
         margin-bottom: 6px;
     }
 
@@ -16,6 +16,31 @@
 
         &:focus {
             background-color: $color-boxes;
+            outline: none;
+        }
+    }
+
+    .widget-select {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            display: block;
+            right: 10px;
+            bottom: 9px;
+            width: 24px;
+            height: 24px;
+            background-repeat: no-repeat;
+            background-image: url("../../img/angle.svg");
+            transform: rotate(90deg);
+            pointer-events: none;
+        }
+        select {
+            appearance: none;
+            padding: 9px 40px 9px 10px;
+        }
+        select::-ms-expand {
+            display: none;
         }
     }
 
@@ -24,7 +49,6 @@
     }
 
     .formbody {
-        @extend .flex-wrap;
 
         .widget {
             margin-bottom: 0.6em;

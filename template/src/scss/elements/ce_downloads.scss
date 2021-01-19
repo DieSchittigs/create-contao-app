@@ -2,6 +2,7 @@
     margin: $ce-margin 0;
 
     ul {
+        @extend %reset-list;
         border-top: 1px solid $color-lines;
     }
     a {

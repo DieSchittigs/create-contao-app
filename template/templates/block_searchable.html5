@@ -1,0 +1,12 @@
+<div class="<?= $this->class ?><?php if ($this->addImage) echo ' addImage'; ?><?php if ($this->picture && $this->picture['img'] && $this->picture['img']['class']) echo ' has-' . $this->picture['img']['class']; ?><?php if($this->addImage && $this->floating == 'above') echo ' hasImageAbove'; ?> block"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?>>
+
+  <?php $this->block('headline'); ?>
+    <?php if ($this->headline && $this->type != 'text') : ?>
+      <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+    <?php endif; ?>
+  <?php $this->endblock(); ?>
+
+  <?php $this->block('content'); ?>
+  <?php $this->endblock(); ?>
+
+</div>
